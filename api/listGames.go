@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"../game"
 	"github.com/gorilla/mux"
@@ -10,13 +11,13 @@ import (
 
 func listGames(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	key := vars["game"]
+	gameID := vars["gameId"]
+	gameIDInt, _ := strconv.Atoi(gameID)
 	foundGames := game.ListGames()
 	for _, game := range foundGames {
-		if game.ID == key {
-			json.NewEncoder(w).Encode(account)
+		if game.ID == gameIDInt {
+			json.NewEncoder(w).Encode(game)
 		}
 	}
-	foundGames := game.ListGames()
 	json.NewEncoder(w).Encode(foundGames)
 }
