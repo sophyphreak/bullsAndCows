@@ -16,11 +16,11 @@ type Game struct {
 	Rounds []Round
 }
 
-func findGameByID(id int) (*Game, error) {
-	for _, g := range Games {
+func findGameByID(id int) (Game, int, error) {
+	for i, g := range Games {
 		if g.ID == id {
-			return g, nil
+			return *g, i, nil
 		}
 	}
-	return &Game{}, errors.New("Game with id of" + strconv.Itoa(id) + "not found")
+	return Game{}, -1, errors.New("Game with id of" + strconv.Itoa(id) + "not found")
 }
