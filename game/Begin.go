@@ -16,7 +16,7 @@ func Begin() int {
 	//set the status
 	newGame.Status = "inProgress"
 	// use make() to create empty rounds slice
-	newGame.Rounds = make([]Round, 8)
+	newGame.Rounds = make([]Round, 1)
 	// adds it to the global slice
 	Games = append(Games, &newGame)
 	// returns id of new game
