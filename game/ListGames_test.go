@@ -14,7 +14,6 @@ func TestListGames(t *testing.T) {
 		make([]Round, 1),
 	}
 	Games = append(Games, &game1)
-
 	checkGame := ListGames()
 
 	if game1.ID != checkGame[0].ID {

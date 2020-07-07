@@ -1,7 +1,6 @@
 package game
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -21,7 +20,6 @@ func Begin() int {
 	// adds it to the global slice
 	Games = append(Games, &newGame)
 	// returns id of new game
-	fmt.Println(newGame.Answer)
 	return newGame.ID
 }
 
