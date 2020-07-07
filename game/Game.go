@@ -1,9 +1,12 @@
 package game
 
-import "errors"
+import (
+	"errors"
+	"strconv"
+)
 
 // Games contains all games, active and finished
-var Games []*game
+var Games []*Game
 
 // Game contains a single game's data
 type Game struct {
@@ -13,11 +16,11 @@ type Game struct {
 	Rounds []Round
 }
 
-func findGameByID(id int) (Game, err) {
+func findGameByID(id int) (Game, error) {
 	for _, g := range Games {
 		if g.ID == id {
-			return g, nil
+			return *g, nil
 		}
 	}
-	return Game{}, errors.New("Game with id of", id, "not found")
+	return Game{}, errors.New("Game with id of" + strconv.Itoa(id) + "not found")
 }
