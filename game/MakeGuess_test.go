@@ -14,7 +14,7 @@ func TestMakeGuess(t *testing.T) {
 		make([]Round, 0),
 	}
 	Games = append(Games, &game1)
-	r := MakeGuess(game1.id, "1234")
+	r, err := MakeGuess(game1.id, "1234")
 	if r.ExactMatches != 4 {
 		t.Errorf("Expected 4 exact matches but instead received %d", r.ExactMatches)
 	}
@@ -41,7 +41,10 @@ func TestMakeGuess(t *testing.T) {
 		make([]Round, 0),
 	}
 	Games = append(Games, &game2)
-	r = MakeGuess(game2.id, "4321")
+	r, err = MakeGuess(game2.id, "4321")
+	if err != nil {
+		t.Errorf("Expected no error but instead received %v", err)
+	}
 	if r.ExactMatches != 0 {
 		t.Errorf("Expected 0 exact matches but instead received %d", r.ExactMatches)
 	}
@@ -61,7 +64,10 @@ func TestMakeGuess(t *testing.T) {
 		t.Errorf("Expected game1 to have 1 round but instead received %d", len(game1.rounds))
 	}
 
-	r = MakeGuess(game2.id, "5678")
+	r, err = MakeGuess(game2.id, "5678")
+	if err != nil {
+		t.Errorf("Expected no error but instead received %v", err)
+	}
 	if r.ExactMatches != 0 {
 		t.Errorf("Expected 0 exact matches but instead received %d", r.ExactMatches)
 	}
@@ -81,7 +87,10 @@ func TestMakeGuess(t *testing.T) {
 		t.Errorf("Expected game1 to have 2 round but instead received %d", len(game1.rounds))
 	}
 
-	r = MakeGuess(game2.id, "1243")
+	r, err = MakeGuess(game2.id, "1243")
+	if err != nil {
+		t.Errorf("Expected no error but instead received %v", err)
+	}
 	if r.ExactMatches != 2 {
 		t.Errorf("Expected 2 exact matches but instead received %d", r.ExactMatches)
 	}
@@ -101,7 +110,10 @@ func TestMakeGuess(t *testing.T) {
 		t.Errorf("Expected game1 to have 3 round but instead received %d", len(game1.rounds))
 	}
 
-	r = MakeGuess(game2.id, "1234")
+	r, err = MakeGuess(game2.id, "1234")
+	if err != nil {
+		t.Errorf("Expected no error but instead received %v", err)
+	}
 	if r.ExactMatches != 4 {
 		t.Errorf("Expected 4 exact matches but instead received %d", r.ExactMatches)
 	}
@@ -119,5 +131,13 @@ func TestMakeGuess(t *testing.T) {
 	}
 	if len(game2.rounds) != 4 {
 		t.Errorf("Expected game1 to have 4 round but instead received %d", len(game1.rounds))
+	}
+
+	r, err = MakeGuess(-1, "1234")
+	if err == nil {
+		t.Errorf("Expected error but instead received %v", err)
+	}
+	if (r != Round{}) {
+		t.Errorf("Expected empty Round but instead received %v", r)
 	}
 }
