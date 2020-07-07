@@ -1,11 +1,6 @@
 package game
 
-import (
-	"fmt"
-	"reflect"
-	"testing"
-)
-
+/*
 func TestMakeGuess(t *testing.T) {
 	game1 := Game{
 		0,
@@ -142,3 +137,4 @@ func TestMakeGuess(t *testing.T) {
 		t.Errorf("Expected empty Round but instead received %v", r)
 	}
 }
+*/
