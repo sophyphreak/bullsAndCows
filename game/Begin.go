@@ -14,7 +14,7 @@ func Begin() int {
 	rand.Seed(time.Now().UTC().UnixNano())
 	newGame.Answer = GenRandArray()
 	//set the status
-	newGame.Status = "inProgress"
+	newGame.Status = "IN PROGRESS"
 	// use make() to create empty rounds slice
 	newGame.Rounds = make([]Round, 1)
 	// adds it to the global slice

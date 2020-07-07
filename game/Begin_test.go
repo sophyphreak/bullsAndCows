@@ -14,7 +14,7 @@ func TestBegin(t *testing.T) {
 	if newGame.ID <= -1 {
 		t.Errorf("Expected id is greater than -1 but instead received %d", newGame.ID)
 	}
-	if newGame.Status != "inProgress" {
+	if newGame.Status != "IN PROGRESS" {
 		t.Errorf("Expected newGame.status to be IN PROGRESS but instead found %s", newGame.Status)
 	}
 }

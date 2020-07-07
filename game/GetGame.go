@@ -1,9 +1,10 @@
 package game
 
 func GetGame(gameID int) (Game, error) {
-	gameCopy, err := findGameByID(gameID)
+	gamePtr, err := findGameByID(gameID)
+	gameCopy := *gamePtr
 	if err == nil {
-		if gameCopy.Status = "inProgress" {
+		if gameCopy.Status == "IN PROGRESS" {
 			emptyArr := [4]int{}
 			gameCopy.Answer = emptyArr
 		}

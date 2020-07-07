@@ -8,7 +8,7 @@ import (
 func TestGetGame(t *testing.T) {
 	Begin()
 	got, err := GetGame(0)
-	expected := Game{0, [4]int{}, "inProgress", make([]Round, 1)}
+	expected := Game{0, [4]int{}, "IN PROGRESS", make([]Round, 1)}
 
 	if err != nil {
 		t.Errorf("Got %v erro but expected nil", err)
