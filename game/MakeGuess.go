@@ -19,7 +19,7 @@ func MakeGuess(id int, gu string) (Round, error) {
 	}
 	guess := strings.Split(gu, "")
 	round := Round{
-		len(game.Rounds) + 1,
+		len(game.Rounds),
 		guessInt,
 		0,
 		0,
