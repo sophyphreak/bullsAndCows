@@ -8,14 +8,19 @@ import (
 
 // MakeGuess handles making the guess
 func MakeGuess(id int, gu string) (Round, error) {
-	game, index, err := findGameByID(id)
+	index, err := findGameByID(id)
+	game := *(Games[index])
+	if err != nil {
+		return Round{}, err
+	}
+	guessInt, err := strconv.Atoi(gu)
 	if err != nil {
 		return Round{}, err
 	}
 	guess := strings.Split(gu, "")
 	round := Round{
 		len(game.Rounds) + 1,
-		len(game.Rounds) + 1,
+		guessInt,
 		0,
 		0,
 		time.Now(),
