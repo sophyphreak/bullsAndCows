@@ -9,7 +9,7 @@ import (
 func Begin() int {
 	var newGame Game
 	//set id
-	newGame.ID = 0
+	newGame.ID = len(Games)
 	// create the four unique, random digits
 	rand.Seed(time.Now().UTC().UnixNano())
 	newGame.Answer = GenRandArray()
