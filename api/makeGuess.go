@@ -20,6 +20,7 @@ func makeGuess(w http.ResponseWriter, r *http.Request) {
 	round, err := game.MakeGuess(g.ID, g.Guess)
 	if err != nil {
 		json.NewEncoder(w).Encode(err)
+		return
 	}
 	json.NewEncoder(w).Encode(round)
 }

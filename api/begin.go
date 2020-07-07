@@ -13,7 +13,7 @@ type b struct {
 }
 
 func begin(w http.ResponseWriter, r *http.Request) {
-	id := game.Begin()
 	fmt.Println("POST /begin")
+	id := game.Begin()
 	json.NewEncoder(w).Encode(b{id})
 }
