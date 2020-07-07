@@ -8,17 +8,32 @@ import (
 // Begin handles beginning a new game, returns id of that new game
 func Begin() int {
 	var newGame game
-	rand.Seed(time.Now().UTC().UnixNano())
+	//set id
+	newGame.id = 0
 	// create the four unique, random digits
-	answer := [4]int{0, 0, 0, 0}
-	exists := make(map[int]bool)
-	for i := range answer {
-		n = rand.Intn(10)
+	rand.Seed(time.Now().UTC().UnixNano())
+	newGame.answer = GenRandArray()
+	//set the status
+	newGame.status = "inProgress"
+	// use make() to create empty rounds slice
+	newGame.rounds = make([]round, 8)
+	// adds it to the global slice
+	Games = append(Games, &newGame)
+	// returns id of new game
+	return newGame.id
+}
+
+func GenRandArray() [4]int {
+	answers := [4]int{}
+	answerMap := make(map[int]bool)
+	for indx, _ := range answers {
+		n := rand.Intn(10)
+		for answerMap[n] == true {
+			n = rand.Intn(10)
+		}
+		answerMap[n] = true
+		answers[indx] = n
 
 	}
-	// sets the status
-	// adds it to the global slice
-	// use make() to create empty rounds slice
-	// returns id of new game
-	return -1
+	return answers
 }

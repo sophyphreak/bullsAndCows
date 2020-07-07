@@ -14,14 +14,18 @@ func TestBegin(t *testing.T) {
 	if newGame.id <= -1 {
 		t.Errorf("Expected id is greater than -1 but instead received %d", newGame.id)
 	}
-	if newGame.status != "IN PROGRESS" {
+	if newGame.status != "inProgress" {
 		t.Errorf("Expected newGame.status to be IN PROGRESS but instead found %s", newGame.status)
 	}
+}
+
+func TestGenRandArray(t *testing.T) {
+	answers := GenRandArray()
 	freqCount := make(map[int]int)
-	for _, n := range newGame.answer {
+	for _, n := range answers {
 		freqCount[n]++
 		if freqCount[n] >= 2 {
-			t.Errorf("Expected all numbers in newGame.answer to be unique but instead received %v", newGame.answer)
+			t.Errorf("Expected [4]int with uniqe values got %v", answers)
 			break
 		}
 	}
