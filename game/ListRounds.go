@@ -3,8 +3,8 @@ package game
 // ListRounds returns a list of all rounds in a game
 func ListRounds(id int) []Round {
 
-	foundGame, err := findGameByID(id)
-	if err != nil {
+	foundGame, index, err := findGameByID(id)
+	if err != nil || index == -1 {
 		panic(err)
 	}
 
