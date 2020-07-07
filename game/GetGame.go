@@ -1,5 +1,6 @@
 package game
 
+/*
 func GetGame(gameID int) (Game, error) {
 	indx, err := findGameByID(gameID)
 	gameCopy := *Games[indx]
@@ -10,3 +11,4 @@ func GetGame(gameID int) (Game, error) {
 	}
 	return gameCopy, err
 }
+*/
