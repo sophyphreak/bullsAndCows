@@ -8,13 +8,10 @@ import (
 
 // MakeGuess handles making the guess
 func MakeGuess(id int, gu string) (Round, error) {
-	ga, err := findGameByID(id)
+	game, index, err := findGameByID(id)
 	if err != nil {
 		return Round{}, err
 	}
-
-	game := *ga
-
 	guess := strings.Split(gu, "")
 	round := Round{
 		len(game.Rounds) + 1,
@@ -40,5 +37,6 @@ func MakeGuess(id int, gu string) (Round, error) {
 	if round.ExactMatches == 4 {
 		game.Status = "FINISHED"
 	}
+	Games[index] = &game
 	return round, nil
 }
