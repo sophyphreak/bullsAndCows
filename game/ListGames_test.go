@@ -1,31 +1,32 @@
 package game
 
 import (
+	"reflect"
 	"testing"
-	"time"
 )
 
 func TestListGames(t *testing.T) {
-	var g *Games
-	round1 := Round{
-		1,
-		1,
-		3,
-		1,
-		time.Now(),
-	}
-	var round []Round
-	round = append(round, round1)
+
 	game1 := Game{
 		0,
 		[4]int{1, 2, 3, 4},
 		"IN PROGRESS",
-		round,
+		make([]Round, 1),
 	}
+	Games = append(Games, &game1)
 
-	check := ListGames(g)
-	if g.Game[0] != game1 {
-		t.Errorf("Expected Game[0] to be %v but got %v", g.Game[0], check)
+	checkGame := ListGames()
+
+	if game1.ID != checkGame[0].ID {
+		t.Errorf("Got id %v chekGame[0] id %v", game1.ID, checkGame[0].ID)
 	}
-
+	if game1.Answer != checkGame[0].Answer {
+		t.Errorf("Got answer %v but chekGame[0] %v", game1.Answer, checkGame[0].Answer)
+	}
+	if reflect.DeepEqual(game1.Rounds, checkGame[0].Rounds) == false {
+		t.Errorf("Got rounds %v chekGame[0] %v", game1.Rounds, checkGame[0].Rounds)
+	}
+	if game1.Status != checkGame[0].Status {
+		t.Errorf("Got status %v chekGame[0] %v", game1.Status, checkGame[0].Status)
+	}
 }

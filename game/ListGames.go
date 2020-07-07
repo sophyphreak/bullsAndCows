@@ -7,9 +7,7 @@ func ListGames() []Game {
 
 	for i := 0; i < len(Games); i++ {
 		game, err := GetGame(i)
-		if err != nil {
-			panic(err)
-		}
+		Check(err)
 		allGames = append(allGames, game)
 	}
 	return allGames
