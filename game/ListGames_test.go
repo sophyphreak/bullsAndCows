@@ -40,7 +40,7 @@ func TestListGames2(t *testing.T) {
 		"IN PROGRESS",
 		make([]Round, 1),
 	}
-	Games = append(make([]*Game, 0), &game1)
+	Games = append(Games, &game1)
 
 	checkGame := ListGames()
 
@@ -60,4 +60,5 @@ func TestListGames2(t *testing.T) {
 	if game1.Status != checkGame[0].Status {
 		t.Errorf("Got status %v checkGame[0] %v", game1.Status, checkGame[0].Status)
 	}
+	Games = Games[:0]
 }

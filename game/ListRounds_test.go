@@ -6,6 +6,7 @@ import (
 )
 
 func TestListRounds(t *testing.T) {
+	Begin()
 	round1 := Round{
 		1,
 		1,
@@ -21,10 +22,9 @@ func TestListRounds(t *testing.T) {
 		"IN PROGRESS",
 		round,
 	}
-
 	check := ListRounds(0)
 	if game1.Rounds[0] != round1 {
 		t.Errorf("Expected round[0] to be %v but got %v", game1.Rounds[0], check)
 	}
-
+	Games = Games[:0]
 }
