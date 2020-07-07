@@ -7,14 +7,14 @@ import (
 )
 
 func TestMakeGuess(t *testing.T) {
-	game1 := game{
+	game1 := Game{
 		0,
 		[4]int{1, 2, 3, 4},
 		"IN PROGRESS",
 		make([]Round, 0),
 	}
 	Games = append(Games, &game1)
-	r, err := MakeGuess(game1.id, "1234")
+	r, err := MakeGuess(game1.ID, "1234")
 	if r.ExactMatches != 4 {
 		t.Errorf("Expected 4 exact matches but instead received %d", r.ExactMatches)
 	}
@@ -27,21 +27,21 @@ func TestMakeGuess(t *testing.T) {
 	if fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)) != "time.Time" {
 		t.Errorf("Expected type of TimeOfGuess to be time.Time but instead received %v", fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)))
 	}
-	if game1.status != "FINISHED" {
-		t.Errorf("Expected game1 status to be FINISHED but instead received %s", game1.status)
+	if game1.Status != "FINISHED" {
+		t.Errorf("Expected game1 status to be FINISHED but instead received %s", game1.Status)
 	}
-	if len(game1.rounds) != 1 {
-		t.Errorf("Expected game1 to have 1 round but instead received %d", len(game1.rounds))
+	if len(game1.Rounds) != 1 {
+		t.Errorf("Expected game1 to have 1 round but instead received %d", len(game1.Rounds))
 	}
 
-	game2 := game{
+	game2 := Game{
 		0,
 		[4]int{1, 2, 3, 4},
 		"IN PROGRESS",
 		make([]Round, 0),
 	}
 	Games = append(Games, &game2)
-	r, err = MakeGuess(game2.id, "4321")
+	r, err = MakeGuess(game2.ID, "4321")
 	if err != nil {
 		t.Errorf("Expected no error but instead received %v", err)
 	}
@@ -57,14 +57,14 @@ func TestMakeGuess(t *testing.T) {
 	if fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)) != "time.Time" {
 		t.Errorf("Expected type of TimeOfGuess to be time.Time but instead received %v", fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)))
 	}
-	if game2.status != "IN PROGRESS" {
-		t.Errorf("Expected game1 status to be IN PROGRESS but instead received %s", game1.status)
+	if game2.Status != "IN PROGRESS" {
+		t.Errorf("Expected game1 status to be IN PROGRESS but instead received %s", game1.Status)
 	}
-	if len(game2.rounds) != 1 {
-		t.Errorf("Expected game1 to have 1 round but instead received %d", len(game1.rounds))
+	if len(game2.Rounds) != 1 {
+		t.Errorf("Expected game1 to have 1 round but instead received %d", len(game1.Rounds))
 	}
 
-	r, err = MakeGuess(game2.id, "5678")
+	r, err = MakeGuess(game2.ID, "5678")
 	if err != nil {
 		t.Errorf("Expected no error but instead received %v", err)
 	}
@@ -80,14 +80,14 @@ func TestMakeGuess(t *testing.T) {
 	if fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)) != "time.Time" {
 		t.Errorf("Expected type of TimeOfGuess to be time.Time but instead received %v", fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)))
 	}
-	if game2.status != "IN PROGRESS" {
-		t.Errorf("Expected game1 status to be IN PROGRESS but instead received %s", game1.status)
+	if game2.Status != "IN PROGRESS" {
+		t.Errorf("Expected game1 status to be IN PROGRESS but instead received %s", game1.Status)
 	}
-	if len(game2.rounds) != 2 {
-		t.Errorf("Expected game1 to have 2 round but instead received %d", len(game1.rounds))
+	if len(game2.Rounds) != 2 {
+		t.Errorf("Expected game1 to have 2 round but instead received %d", len(game1.Rounds))
 	}
 
-	r, err = MakeGuess(game2.id, "1243")
+	r, err = MakeGuess(game2.ID, "1243")
 	if err != nil {
 		t.Errorf("Expected no error but instead received %v", err)
 	}
@@ -103,14 +103,14 @@ func TestMakeGuess(t *testing.T) {
 	if fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)) != "time.Time" {
 		t.Errorf("Expected type of TimeOfGuess to be time.Time but instead received %v", fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)))
 	}
-	if game2.status != "IN PROGRESS" {
-		t.Errorf("Expected game1 status to be IN PROGRESS but instead received %s", game1.status)
+	if game2.Status != "IN PROGRESS" {
+		t.Errorf("Expected game1 status to be IN PROGRESS but instead received %s", game1.Status)
 	}
-	if len(game2.rounds) != 3 {
-		t.Errorf("Expected game1 to have 3 round but instead received %d", len(game1.rounds))
+	if len(game2.Rounds) != 3 {
+		t.Errorf("Expected game1 to have 3 round but instead received %d", len(game1.Rounds))
 	}
 
-	r, err = MakeGuess(game2.id, "1234")
+	r, err = MakeGuess(game2.ID, "1234")
 	if err != nil {
 		t.Errorf("Expected no error but instead received %v", err)
 	}
@@ -126,11 +126,11 @@ func TestMakeGuess(t *testing.T) {
 	if fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)) != "time.Time" {
 		t.Errorf("Expected type of TimeOfGuess to be time.Time but instead received %v", fmt.Sprint(reflect.TypeOf(r.TimeOfGuess)))
 	}
-	if game2.status != "FINISHED" {
-		t.Errorf("Expected game1 status to be FINISHED but instead received %s", game1.status)
+	if game2.Status != "FINISHED" {
+		t.Errorf("Expected game1 status to be FINISHED but instead received %s", game1.Status)
 	}
-	if len(game2.rounds) != 4 {
-		t.Errorf("Expected game1 to have 4 round but instead received %d", len(game1.rounds))
+	if len(game2.Rounds) != 4 {
+		t.Errorf("Expected game1 to have 4 round but instead received %d", len(game1.Rounds))
 	}
 
 	r, err = MakeGuess(-1, "1234")
