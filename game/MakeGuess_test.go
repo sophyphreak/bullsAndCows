@@ -13,6 +13,7 @@ func TestMakeGuess(t *testing.T) {
 		"IN PROGRESS",
 		make([]Round, 0),
 	}
+	Games = make([]*Game, 0)
 	Games = append(Games, &game1)
 	r, err := MakeGuess(game1.ID, "1234")
 	if r.ExactMatches != 4 {
