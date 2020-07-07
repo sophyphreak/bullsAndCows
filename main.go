@@ -1,5 +1,7 @@
 package main
 
+import "./api"
+
 func main() {
-	handleRequests()
+	api.HandleRequests()
 }
