@@ -1,5 +1,7 @@
 package game
 
+import "time"
+
 // Games contains all games, active and finished
 var Games []*game
 
@@ -15,4 +17,5 @@ type round struct {
 	guess          int
 	exactMatches   int
 	partialMatches int
+	timeOfGuess    time.Time
 }
