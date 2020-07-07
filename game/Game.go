@@ -10,10 +10,10 @@ var Games []*Game
 
 // Game contains a single game's data
 type Game struct {
-	ID     int
-	Answer [4]int
-	Status string
-	Rounds []Round
+	ID     int     `json:"id"`
+	Answer [4]int  `json:"answer"`
+	Status string  `json:"status"`
+	Rounds []Round `json:"rounds"`
 }
 
 func findGameByID(id int) (int, error) {
