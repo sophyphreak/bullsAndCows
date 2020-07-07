@@ -17,6 +17,7 @@ func TestBegin(t *testing.T) {
 	if newGame.Status != "IN PROGRESS" {
 		t.Errorf("Expected newGame.status to be IN PROGRESS but instead found %s", newGame.Status)
 	}
+	Games = Games[:0]
 }
 
 func TestGenRandArray(t *testing.T) {

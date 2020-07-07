@@ -21,10 +21,10 @@ func TestListRounds(t *testing.T) {
 		"IN PROGRESS",
 		round,
 	}
-
-	check := ListRounds(0)
-	if game1.Rounds[0] != round1 {
-		t.Errorf("Expected round[0] to be %v but got %v", game1.Rounds[0], check)
+	Games = append(Games, &game1)
+	foundRounds := ListRounds(0)
+	if foundRounds[0] != round1 {
+		t.Errorf("Expected round1 to be %v but got %v", round1, foundRounds[0])
 	}
-
+	Games = Games[:0]
 }

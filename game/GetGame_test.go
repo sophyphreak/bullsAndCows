@@ -26,4 +26,5 @@ func TestGetGame(t *testing.T) {
 	if got.Status != expected.Status {
 		t.Errorf("Got status %v Expected %v", got.Status, expected.Status)
 	}
+	Games = Games[:0]
 }
