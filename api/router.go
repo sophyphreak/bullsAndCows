@@ -7,7 +7,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func handleRequests() {
+// HandleRequests handles requests
+func HandleRequests() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/begin", begin).Methods("POST")
 	router.HandleFunc("/guess", makeGuess).Methods("POST")

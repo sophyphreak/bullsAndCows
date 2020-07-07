@@ -22,9 +22,9 @@ func TestListRounds(t *testing.T) {
 		round,
 	}
 
-	ListRounds(0)
+	check := ListRounds(0)
 	if game1.Rounds[0] != round1 {
-		t.Errorf("Expected round[0] to be %v but got %v", game1.Rounds[0], round1)
+		t.Errorf("Expected round[0] to be %v but got %v", game1.Rounds[0], check)
 	}
 
 }
