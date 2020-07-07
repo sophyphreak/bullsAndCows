@@ -7,20 +7,20 @@ import (
 
 // Begin handles beginning a new game, returns id of that new game
 func Begin() int {
-	var newGame game
+	var newGame Game
 	//set id
-	newGame.id = 0
+	newGame.ID = 0
 	// create the four unique, random digits
 	rand.Seed(time.Now().UTC().UnixNano())
-	newGame.answer = GenRandArray()
+	newGame.Answer = GenRandArray()
 	//set the status
-	newGame.status = "inProgress"
+	newGame.Status = "inProgress"
 	// use make() to create empty rounds slice
-	newGame.rounds = make([]round, 8)
+	newGame.Rounds = make([]Round, 8)
 	// adds it to the global slice
 	Games = append(Games, &newGame)
 	// returns id of new game
-	return newGame.id
+	return newGame.ID
 }
 
 func GenRandArray() [4]int {
@@ -33,7 +33,6 @@ func GenRandArray() [4]int {
 		}
 		answerMap[n] = true
 		answers[indx] = n
-
 	}
 	return answers
 }
