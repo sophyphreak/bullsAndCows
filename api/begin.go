@@ -1,7 +1,15 @@
 package api
 
-import "net/http"
+import (
+	"encoding/json"
+	"net/http"
+)
 
-func begin(w http.ResponseWriter, r *http.Request) {
+type b struct {
+	ID int `json:"id"`
+}
 
+func begin(w http.ResponseWriter) {
+	id := game.Begin()
+	json.NewEncoder(w).Encode(b{id})
 }
